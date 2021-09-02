@@ -15,6 +15,7 @@ Custom Resources
 Admission Webhooks
 - Webhooks: https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/
 - Admission Controllers: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
+- Good Blog: https://banzaicloud.com/blog/k8s-admission-webhooks/
 
 Helm 
 - Chart templates tips: https://helm.sh/docs/howto/charts_tips_and_tricks/
@@ -31,7 +32,7 @@ Kubernetes Lab:
 - katacoda: https://www.katacoda.com/courses/kubernetes/playground
 
 Excercises: 
-- Hostpath CSI backup & restore: https://github.com/kubernetes-csi/csi-driver-host-path/tree/master/examples
+- Hostpath CSI Snapshot & Restore: https://github.com/kubernetes-csi/csi-driver-host-path/tree/master/examples
 - Setup Cassandra on minikube with hostpath: https://kubernetes.io/docs/tutorials/stateful-application/cassandra/
 
 - Create a Pod with a seccomp profile for syscall auditing: https://kubernetes.io/docs/tutorials/clusters/seccomp/#create-pod-with-seccomp-profile-that-causes-violation

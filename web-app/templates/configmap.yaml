@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: page-data-1
+  labels:
+    name: app
+data:
+  index.html: |2-
+    {{ tpl (.Files.Get "data/app1.html" | nindent 4 ) . }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: page-data-2
+  labels:
+    name: app
+data:
+  index.html: |2-
+    {{ tpl (.Files.Get "data/app2.html" | nindent 4 ) . }}

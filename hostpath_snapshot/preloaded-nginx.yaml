@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: preloaded-nginx
+  name: preloaded-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: preloaded-nginx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: preloaded-nginx
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /somedir
+          name: nginx-volume
+      volumes: 
+        - name: nginx-volume
+          persistentVolumeClaim:
+            claimName: csi-pvc-restore

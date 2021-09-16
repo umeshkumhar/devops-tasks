@@ -12,7 +12,7 @@
 - Navigate to the Gitrepo and **csi-driver-host-path**
 - Run the below command [**Note**: use appropriate k8s version]
 
-        deploy/kubernetes-1.21/deploy-hostpath.sh
+        deploy/kubernetes-1.21/deploy.sh
 
 #### Step 3: Clone the Gitrepo **https://github.com/kubernetes-csi/external-snapshotter**
 

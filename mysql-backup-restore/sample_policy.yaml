@@ -1,0 +1,10 @@
+apiVersion: triliovault.trilio.io/v1
+kind: Policy
+metadata:
+  name: mysql-sample-policy
+  namespace: mysql-demo
+spec:
+  type: Retention
+  default: false
+  retentionConfig:
+    latest: 2

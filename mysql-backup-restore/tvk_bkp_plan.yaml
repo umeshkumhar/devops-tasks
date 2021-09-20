@@ -1,0 +1,17 @@
+apiVersion: triliovault.trilio.io/v1
+kind: BackupPlan
+metadata:
+  name: mysql-backup-plan
+  namespace: mysql-demo
+spec:
+  backupConfig:
+    target:
+      namespace: mysql-demo
+      name: mysql-sample-target
+    retentionPolicy:
+      namespace: mysql-demo
+      name: mysql-sample-policy
+  backupPlanComponents:
+    custom:
+      - matchLabels:
+          app: k8s-demo-app

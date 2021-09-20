@@ -1,0 +1,11 @@
+apiVersion: triliovault.trilio.io/v1
+kind: Restore
+metadata:
+  name: tvk-mysqlpv-restore
+spec:
+  source:
+    type: Backup
+    backup:
+      name: tvk-pv-backup
+      namespace: mysql-demo
+  patchIfAlreadyExists: true

@@ -1,0 +1,12 @@
+apiVersion: triliovault.trilio.io/v1
+kind: Target
+metadata:
+  name: mysql-sample-target
+  namespace: mysql-demo
+spec:
+  nfsCredentials:
+    nfsExport: 34.66.17.160:/src/nfs/abhi
+    nfsOptions: nfsvers=4
+  type: NFS
+  thresholdCapacity: 10Gi
+  vendor: Other 

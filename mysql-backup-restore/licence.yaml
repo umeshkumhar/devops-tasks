@@ -1,0 +1,8 @@
+---
+# TrilioVault License
+apiVersion: triliovault.trilio.io/v1
+kind: License
+metadata:
+    name: test-license-1
+spec:
+    key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

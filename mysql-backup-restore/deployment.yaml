@@ -1,0 +1,75 @@
+## Secret for mysql password
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-pass
+  labels:
+    app: k8s-demo-app
+    tier: frontend
+type: Opaque
+data:
+  password: dHJpbGlvcGFzcwo=
+---
+## Mysql app deployment
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: k8s-demo-app-mysql
+  labels:
+    app: k8s-demo-app
+    tier: mysql
+  namespace: mysql-demo  
+spec:
+  selector:
+    matchLabels:
+      app: k8s-demo-app
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: k8s-demo-app
+        tier: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "yes"
+        # - name: MYSQL_USER
+        #   value: "test"
+        # - name: MYSQL_PASSWORD
+        #   value: "test_pass"
+        # - name: MYSQL_ROOT_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mysql-pass
+        #       key: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: tvk-mysql-pvc
+---
+## Service for mysql app
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-demo-app-mysql
+  labels:
+    app: k8s-demo-app
+    tier: mysql
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:
+    app: k8s-demo-app
+    tier: mysql

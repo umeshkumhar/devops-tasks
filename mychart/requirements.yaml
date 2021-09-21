@@ -1,0 +1,4 @@
+dependencies:
+  - name: mariadb
+    version: 9.0.0
+    repository: https://charts.bitnami.com/bitnami

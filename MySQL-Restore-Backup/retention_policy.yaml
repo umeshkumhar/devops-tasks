@@ -1,0 +1,10 @@
+apiVersion: triliovault.trilio.io/v1
+kind: Policy
+metadata:
+  name: mysql-policy-ajinkya
+  namespace: mysql-ajinkya
+spec:
+  type: Retention
+  default: false
+  retentionConfig:
+    latest: 5

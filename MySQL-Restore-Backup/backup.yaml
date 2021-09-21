@@ -1,0 +1,10 @@
+apiVersion: triliovault.trilio.io/v1
+kind: Backup
+metadata:
+  namespace: mysql-ajinkya
+  name: mysql-pv-backup
+spec:
+  type: Full
+  backupPlan:
+    name: mysql-backup-plan-ajinkya
+    namespace: mysql-ajinkya

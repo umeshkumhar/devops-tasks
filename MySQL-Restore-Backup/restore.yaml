@@ -1,0 +1,12 @@
+apiVersion: triliovault.trilio.io/v1
+kind: Restore
+metadata:
+  namespace: mysql-ajinkya
+  name: mysql-pv-restore
+spec:
+  source:
+    type: Backup
+    backup:
+      name: mysql-pv-backup
+      namespace: mysql-ajinkya
+  patchIfAlreadyExists: true

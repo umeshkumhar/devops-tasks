@@ -1,0 +1,17 @@
+apiVersion: triliovault.trilio.io/v1
+kind: BackupPlan
+metadata:
+  name: mysql-backup-plan-ajinkya
+  namespace: mysql-ajinkya
+spec:
+  backupConfig:
+    target:
+      namespace: mysql-ajinkya
+      name: mysql-target-ajinkya
+    retentionPolicy:
+      namespace: mysql-ajinkya
+      name: mysql-policy-ajinkya
+  backupPlanComponents:
+    custom:
+      - matchLabels:
+          app: ajinkya-app

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-2
+  labels:
+    {{- include "web-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.app2.service.type }}
+  ports:
+    {{- .Values.app2.service.ports | toYaml | nindent 4 }}
+  selector:
+    application: webapp2

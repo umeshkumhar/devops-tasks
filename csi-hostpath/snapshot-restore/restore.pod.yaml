@@ -1,0 +1,26 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: restore-snapshot-pod
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - csi-hostpathplugin
+        topologyKey: kubernetes.io/hostname
+  containers:
+    - name: my-frontend
+      image: busybox
+      volumeMounts:
+      - mountPath: "/data"
+        name: my-csi-volume
+      command: [ "sleep", "1000000" ]
+  volumes:
+    - name: my-csi-volume
+      persistentVolumeClaim:
+        claimName: fs-pvc-restore  # pvc with datasource as the snapshot
